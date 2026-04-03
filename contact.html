@@ -1,0 +1,379 @@
+<!-- Change line 285 when awm@ubc.ca is working, make another id on web3form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | AWM @ UBC</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    .contact-section {
+      padding: 80px 5%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 60px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+
+    .contact-block {
+      background: #fff;
+      border: 1px solid rgba(205,183,233,.35);
+      border-radius: 16px;
+      padding: 28px 26px;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .contact-block:hover {
+      box-shadow: 0 8px 24px rgba(75,31,95,.1);
+      transform: translateY(-3px);
+    }
+    .contact-block h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--deep-plum);
+    }
+    .contact-block p {
+      font-size: 0.87rem;
+      color: #777;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--light-lilac);
+      color: var(--royal-purple);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      border-radius: 24px;
+      text-decoration: none;
+      border: 1.5px solid rgba(109,63,169,.2);
+      transition: background .2s, color .2s;
+    }
+    .email-link:hover {
+      background: var(--royal-purple);
+      color: #fff;
+    }
+
+    .social-grid { display: flex; flex-direction: column; gap: 10px; }
+
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(205,183,233,.35);
+      background: #fff;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .social-item:hover {
+      border-color: var(--royal-purple);
+      background: var(--light-lilac);
+      transform: translateX(4px);
+    }
+
+    .social-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .icon-instagram { background: #fff0f6; color: #d63384; }
+    .icon-email     { background: var(--light-lilac); color: var(--royal-purple); }
+
+    .social-item-text strong { font-size: 0.9rem; color: var(--deep-plum); display: block; }
+    .social-item-text span   { font-size: 0.8rem; color: #999; }
+
+    .response-note {
+      background: linear-gradient(135deg, var(--light-lilac), #efe8f9);
+      border-left: 4px solid var(--royal-purple);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      font-size: 0.84rem;
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+\    .contact-form-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 36px;
+      border: 1px solid rgba(205,183,233,.4);
+      box-shadow: 0 8px 32px rgba(75,31,95,.08);
+    }
+
+    .contact-form-card h3 {
+      font-size: 1.6rem;
+      color: var(--deep-plum);
+      margin-bottom: 6px;
+    }
+    .contact-form-card > p {
+      font-size: 0.88rem;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    .contact-form-card .form-group { margin-bottom: 20px; }
+
+    .contact-form-card .form-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--deep-plum);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-form-card .form-group input,
+    .contact-form-card .form-group textarea,
+    .contact-form-card .form-group select {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(205,183,233,.5);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .contact-form-card .form-group input:focus,
+    .contact-form-card .form-group textarea:focus,
+    .contact-form-card .form-group select:focus {
+      border-color: var(--royal-purple);
+      box-shadow: 0 0 0 4px rgba(109,63,169,.1);
+    }
+    .contact-form-card .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--royal-purple);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.97rem;
+      cursor: pointer;
+      transition: background .25s, transform .2s, box-shadow .25s;
+      box-shadow: 0 4px 14px rgba(109,63,169,.25);
+      margin-top: 6px;
+    }
+    .submit-btn:hover:not(:disabled) {
+      background: var(--deep-plum);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(75,31,95,.3);
+    }
+    .submit-btn:disabled {
+      background: #bbb;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 20px;
+    }
+    .form-success .success-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: #e8faf0;
+      color: #2e7d52;
+      font-size: 1.8rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .form-success h4 {
+      color: var(--deep-plum);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .form-success p { font-size: 0.88rem; color: #777; }
+
+    .form-error {
+      display: none;
+      color: #c0392b;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 14px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 860px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 480px) {
+      .contact-form-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <h1>Get in Touch</h1>
+  <p>Questions, ideas, or want to collaborate? We'd love to hear from you.</p>
+</div>
+
+<section class="contact-section">
+  <div class="contact-layout">
+
+    <div class="contact-info reveal">
+
+      <div class="contact-block">
+        <h3>General Enquiries</h3>
+        <p>For anything from event questions to membership info — email is the best way to reach us.</p>
+        <a href="mailto:awm@ubc.ca" class="email-link">✉ awm@ubc.ca</a>
+      </div>
+
+      <div class="contact-block">
+        <h3>Find Us Online</h3>
+        <p>Follow along for event announcements and community updates.</p>
+        <div class="social-grid">
+          <a href="https://www.instagram.com/awm.ubc" target="_blank" class="social-item">
+            <div class="social-icon icon-instagram">IG</div>
+            <div class="social-item-text">
+              <strong>Instagram</strong>
+              <span>@awm.ubc — events &amp; announcements</span>
+            </div>
+          </a>
+          <a href="mailto:awm@ubc.ca" class="social-item">
+            <div class="social-icon icon-email">@</div>
+            <div class="social-item-text">
+              <strong>Email</strong>
+              <span>awm@ubc.ca — official enquiries</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+     
+
+    </div>
+
+    <div class="contact-form-card reveal delay-1">
+
+      <h3>Send a Message</h3>
+      <p>Fill in the form and we'll get back to you as soon as we can.</p>
+
+      <form id="contactForm">
+        <!-- web3forms access key - do not remove -->
+        <input type="hidden" name="access_key" value="ef22fe23-2573-4b70-a567-99829d5d1423">
+        <input type="hidden" name="subject" value="New message — AWM @ UBC website">
+        <input type="checkbox" name="botcheck" style="display: none;">
+
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@student.ubc.ca" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">What is this about?</label>
+          <select id="subject" name="topic">
+            <option value="" disabled selected>Select a topic</option>
+            <option value="General question">General question</option>
+            <option value="Membership / joining">Membership / joining</option>
+            <option value="Events">Events</option>
+            <option value="Mentorship program">Mentorship program</option>
+            <option value="Partnership or sponsorship">Partnership or sponsorship</option>
+            <option value="Guest speaker enquiry">Guest speaker enquiry</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✓</div>
+        <h4>Message sent!</h4>
+        <p>Thanks for reaching out. We'll get back to you within 2-3 business days.</p>
+      </div>
+
+      <div class="form-error" id="formError">
+        Something went wrong. Please try again or email us directly at awm@ubc.ca.
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="nav.js"></script>
+<script src="footer.js"></script>
+<script src="animations.js"></script>
+
+<script>
+  var form    = document.getElementById('contactForm');
+  var btn     = document.getElementById('submitBtn');
+  var success = document.getElementById('formSuccess');
+  var error   = document.getElementById('formError');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    btn.textContent = 'Sending...';
+    btn.disabled    = true;
+    error.style.display = 'none';
+
+    var data = Object.fromEntries(new FormData(form));
+
+    fetch('https://api.web3forms.com/submit', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body:    JSON.stringify(data)
+    })
+    .then(function(res) { return res.json().then(function(json) { return { ok: res.ok, json: json }; }); })
+    .then(function(result) {
+      if (result.ok) {
+        form.style.display    = 'none';
+        success.style.display = 'block';
+      } else {
+        throw new Error(result.json.message || 'Submission failed');
+      }
+    })
+    .catch(function() {
+      error.style.display = 'block';
+      btn.textContent     = 'Send Message →';
+      btn.disabled        = false;
+    });
+  });
+</script>
+
+</body>
+</html>
